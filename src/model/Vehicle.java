@@ -1,6 +1,6 @@
 package model;
 
-public class Vehicle {
+public class Vehicle extends MagicGenerator{
 
     public Vehicle() {
     }
@@ -35,14 +35,14 @@ private String licensePlate;
         this.manufacturer = manufacturer;
     }
 
-    public String getModel() {
+  /**  public String getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    //public void setModel(String model) {
         this.model = model;
     }
-
+**/
     public String getLicensePlate() {
         return licensePlate;
     }
@@ -50,8 +50,21 @@ private String licensePlate;
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
     }
+
     public String toString()
     {
-        return "hello World";
+        StringBuilder sb = new StringBuilder();
+        sb.append(getRandomColor());
+        sb.append("\n");
+        sb.append(getRandomColor());
+        sb.append("\n");
+        sb.append(getRandomColor());
+        sb.append("\n");
+        sb.append(getRandomColor());
+        sb.append("\n");sb.append("\n");
+
+        String s = new String(sb);
+        return s;
+
     }
 }
