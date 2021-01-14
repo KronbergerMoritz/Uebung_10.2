@@ -35,14 +35,14 @@ private String licensePlate;
         this.manufacturer = manufacturer;
     }
 
-  /**  public String getModel() {
+    public String getModel() {
         return model;
     }
 
-    //public void setModel(String model) {
+    public void setModel(String model) {
         this.model = model;
     }
-**/
+
     public String getLicensePlate() {
         return licensePlate;
     }
@@ -53,18 +53,17 @@ private String licensePlate;
 
     public String toString()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getRandomColor());
-        sb.append("\n");
-        sb.append(getRandomColor());
-        sb.append("\n");
-        sb.append(getRandomColor());
-        sb.append("\n");
-        sb.append(getRandomColor());
-        sb.append("\n");sb.append("\n");
+      StringBuilder sb = new StringBuilder();
+      sb.append(getLicensePlate());
+      sb.append("\n");
+      sb.append(getColor());
+      sb.append("\n");
+      sb.append(getManufacturer());
+      sb.append("\n");
+      sb.append(getOwner());
+      sb.append("\n");
 
-        String s = new String(sb);
-        return s;
-
+      String s = sb.toString();
+      return s;
     }
 }

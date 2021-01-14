@@ -1,138 +1,53 @@
 package viewController;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import model.CarDatabase;
 import model.Vehicle;
 
-public class Controller extends Vehicle {
+import java.util.HashMap;
+import java.util.LinkedList;
+
+public class Controller{
+
+    @FXML
+    private TextField textfield;
 
     @FXML
     private Button btn_search;
 
     @FXML
-    private TextField tfield;
+    private Button btn_searchexact;
 
     @FXML
-    private Button btn_searchexectly;
+    private ListView listView;
 
-  //  @FXML
-   // private ListView<?> listview;
-
-    @FXML
-    private TextArea tarea;
-
-
+    private CarDatabase cdb = new CarDatabase();
 
     @FXML
-    void search(MouseEvent event) {
+    void searchPattern(MouseEvent event)
+    {
+        LinkedList<Vehicle> vehicles = cdb.search(textfield.getText(), false);
 
-        String t = tfield.getText();
-
-        if(t.contains("w"))
-        {
-  //          listview.setItems(null);
-        }
-
+        listView.setItems(FXCollections.observableArrayList(vehicles));
     }
 
     @FXML
-    void searchExactly(MouseEvent event)
+    void searchExactPattern(MouseEvent event)
     {
+        LinkedList<Vehicle> vehicles = cdb.search(textfield.getText(), true);
+        LinkedList<String> linkedList = new LinkedList<String>();
 
+        if(vehicles != null) {
+            linkedList.add(vehicles.getFirst().toString());
+        }
 
-        String tf = tfield.getText();
-        //
-        if(tf.equals("BMW")) {
-            tarea.setText("BMW \n" + toString());
-        }
-        else if(tf.equals("250 Isetta"))
-        {
-            tarea.setText("250 Isetta \n"+toString());
-        }
-        else if(tf.equals("300 Isetta"))
-        {
-            tarea.setText("300 Isetta \n"+toString());
-        }
-        else if(tf.equals("BMW 600"))
-        {
-            tarea.setText("BMW 600 \n"+toString());
-        }
-        else if(tf.equals("BMW 700"))
-        {
-            tarea.setText("BMW 700 \n"+toString());
-        }
-        else if(tf.equals("BMW i3"))
-        {
-            tarea.setText("BMW i3 \n"+toString());
-        }
-        else if(tf.equals("BMW 600"))
-        {
-            tarea.setText("BMW 600 \n"+toString());
-        }
-        else if(tf.equals("BMW 1-Series"))
-        {
-            tarea.setText("BMW 1-Series \n"+toString());
-        }
-        else if(tf.equals("BMW 2-Series"))
-        {
-            tarea.setText("BMW 2-Series \n"+toString());
-        }
-        else if(tf.equals("BMW 2-Series Gran Coupé"))
-        {
-            tarea.setText("BMW 2-Series Gran Coupé \n"+toString());
-        }
-        else if(tf.equals("BMW New Class 1602"))
-        {
-            tarea.setText("BMW New Class 1602\n"+toString());
-        }
-        else if(tf.equals("BMW New Class 1802"))
-        {
-            tarea.setText("BMW New Class 1802\n"+toString());
-        }
-        else if(tf.equals("BMW New Class 2002"))
-        {
-            tarea.setText("BMW New Class 2002\n"+toString());
-        }
-        else if(tf.equals("BMW New Class 1602"))
-        {
-            tarea.setText("BMW New Class 1602\n"+toString());
-        }
-        else if(tf.equals("BMW 3-Series "))
-        {
-            tarea.setText("BMW 3-Series  \n"+toString());
-        }
-        else if(tf.equals("BMW 3-Series M3"))
-        {
-            tarea.setText("BMW 3-Series M3\n"+toString());
-        }
-        else if(tf.equals("BMW 4-Series M4"))
-        {
-            tarea.setText("BMW 4-Series M4\n"+toString());
-        }
-        else if(tf.equals("BMW 4-Series "))
-        {
-            tarea.setText("BMW 4-Series \n"+toString());
-        }
-        else if(tf.equals("BMW 3-Series GT"))
-        {
-            tarea.setText("BMW 3-Series GT\n"+toString());
-        }
-        else if(tf.equals("BMW New Class 1500"))
-        {
-            tarea.setText("BMW New Class 1500\n"+toString());
-        }
-        else if(tf.equals("BMW New Class 1600"))
-        {
-            tarea.setText("BMW New Class 1600\n"+toString());
-        }
-        else if(tf.equals("BMW New Class 1800"))
-        {
-            tarea.setText("BMW New Class 1800\n"+toString());
-        }
+        listView.setItems(FXCollections.observableArrayList(linkedList));
     }
 
 }

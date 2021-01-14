@@ -38,7 +38,6 @@ public class MagicGenerator{
 
     public String getRandomColor() {
         int i = r.nextInt(color.length);
-        //return color[i];
         return (color[i]);
     }
 
